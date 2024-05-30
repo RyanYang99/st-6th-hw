@@ -17,12 +17,14 @@ const App = () => {
     setInput("");
   };
 
+  const memoizedItems = useMemo(() => items, [items]);
+
   return (
     <div>
       <h1>Item List</h1>
       <input type="text" value={input} onChange={handleInputChange} />
       <button onClick={addItem}>Add Item</button>
-      <List items={items} />
+      <List items={memoizedItems} />
     </div>
   );
 };
