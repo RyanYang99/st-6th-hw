@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import List from "./components/List";
 
 // TODO: 콘솔창을 확인해보고 Add Item 버튼 클릭 시
@@ -13,9 +12,9 @@ const App = () => {
     setInput(event.target.value);
   };
 
-  const addItem = () => {
+  const addItem = useCallback(() => {
     setItems((prevItems) => [...prevItems, input]);
-  };
+  }, [input]);
 
   useEffect(() => {
     console.log("Add Item 버튼 클릭 시에는 로그가 찍히지 않아야 합니다!");
